@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Média</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>Calculadora de Média</h2>
+    <label for="numeros">Digite os números separados por vírgula:</label>
+    <input type="text" id="numeros">
+    <button onclick="calcularMedia()">Calcular Média</button>
+    <h3>Resultado: <span id="resultado"></span></h3>
+
+    <script>
+        function calcularMedia() {
+            var input = document.getElementById("numeros").value;
+            var resultado = document.getElementById("resultado");
+
+            if (input === "") {
+                resultado.textContent = "Por favor, insira pelo menos um número.";
+                return;
+            }
+
+            var numerosTexto = input.split(",");
+            var numeros = [];
+
+            for (var i = 0; i < numerosTexto.length; i++) {
+                var numero = parseFloat(numerosTexto[i]);
+
+                if (!isNaN(numero)) {
+                    numeros.push(numero);
+                }
+            }
+
+            if (numeros.length === 0) {
+                resultado.textContent = "Por favor, insira números válidos.";
+                return;
+            }
+
+            var soma = 0;
+            for (var j = 0; j < numeros.length; j++) {
+                soma += numeros[j];
+            }
+
+            var media = soma / numeros.length;
+            resultado.textContent = "A média é: " + media.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
