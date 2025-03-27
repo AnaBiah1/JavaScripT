@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcula a area de um circulo</title>
+</head>
+<body>
+
+    <label for="raio">Digite o raio do circulo</label>
+    <input type="number" id="raio">
+    <button onclick="calcularArea(raio.value)">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        const calcularArea = (raio) =>{
+            if (raio>0) {
+                let area = 3.14 * (raio * raio);
+                resultado.textContent = "Área do circulo: " + area;
+            }else {
+                resultado.textContent = "Digite um valor válido!";
+            }
+        }
+    </script>
+    
+</body>
+</html>
