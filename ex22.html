@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Letras</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h2>Contador de Letras</h2>
+    <label for="texto">Digite um texto:</label>
+    <input type="text" id="texto"><br>
+    <label for="letra">Digite uma letra:</label>
+    <input type="text" id="letra" maxlength="1"><br>
+    <button onclick="contarLetra()">Contar</button>
+    <h3>Resultado: <span id="resultado"></span></h3>
+
+    <script>
+        function contarLetra() {
+            let texto = document.getElementById("texto").value.toLowerCase();
+            let letra = document.getElementById("letra").value.toLowerCase();
+            let resultado = document.getElementById("resultado");
+
+            if (texto === "" || letra === "") {
+                resultado.textContent = "Por favor, insira um texto e uma letra.";
+                return;
+
+            }
+            let contador = 0;
+
+            for (let char of texto) {
+                if (char === letra) {
+                    contador++;
+                }
+            }
+
+            resultado.textContent = `A letra "${letra}" aparece ${contador} vezes no texto.`;
+
+        }
+    </script>
+
+</body>
+</html>
