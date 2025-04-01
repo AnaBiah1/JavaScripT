@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números pares</title>
+</head>
+<body>
+    <h1>Números pares</h1>
+    <input type="text" id="numeros_array">
+    <button onclick="filtrarPares(numeros_array.value)">Filtrar</button>
+    <p id="resultado"></p>
+    <script>
+        const filtrarPares = (numeros_array) => {
+            //.split(","); transformar em um array
+            let numeros = numeros_array.split(",");
+            let par = "";
+            alert(numeros.length);
+            for(let i=0; i<= numeros.length; i++)
+            {
+                if(numeros[i] % 2 == 0)
+                par += numeros[1] + ","
+            }
+            if(par == ""){
+            resultado.textContent = "Não há números pares!";
+            }else{
+                resultado.textContent = "Números pares: " + par;
+            }
+        }
+    </script>
+</body>
+</html>
