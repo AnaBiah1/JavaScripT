@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem crescente</title>
+</head>
+<body>
+
+    <h2>Ordenador de Números</h2>
+    <label for="numeros">Digite os números separados por vírgula:</label>
+    <input type="text" id="numeros">
+    <button onclick="ordenarNumeros()">Ordenar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function ordenarArray(array) {
+            return array.sort((a, b) => a - b); 
+        }
+
+        function ordenarNumeros() {
+            const input = document.getElementById("numeros").value;
+            const numeros = input.split(",").map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+
+            if (numeros.length === 0) {
+                document.getElementById("resultado").innerText = "Por favor, insira números válidos.";
+                return;
+            }
+
+            const numerosOrdenados = ordenarArray(numeros);
+            document.getElementById("resultado").innerText = "Números ordenados: " + numerosOrdenados.join(", ");
+        }
+    </script>
+
+</body>
+</html>
+
