@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maior Salário</title>
+</head>
+<body>
+
+    <h2>Maior Salário</h2>
+    <button onclick="calcularMaiorSalario()">Ver Maior Salário</button>
+    <p id="resultado"></p>
+
+    <script>
+        function calcularMaiorSalario() {
+            const pessoas = [
+                { nome: "Ana", salario: 3000 },
+                { nome: "Carlos", salario: 5000 },
+                { nome: "Bruna", salario: 7000 },
+                { nome: "Diego", salario: 4500 }
+            ];
+
+            const pessoaMaiorSalario = pessoas.reduce((max, pessoa) => 
+                pessoa.salario > max.salario ? pessoa : max
+            );
+
+            document.getElementById("resultado").innerText = 
+                `A pessoa com o maior salário é ${pessoaMaiorSalario.nome}, com R$ ${pessoaMaiorSalario.salario}.`;
+        }
+    </script>
+
+</body>
+</html>
