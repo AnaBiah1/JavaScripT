@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadrado dos Números</title>
+</head>
+<body>
+
+    <h2>Calculadora de Quadrado dos Números</h2>
+    <label for="numeros">Digite os números separados por vírgula:</label>
+    <input type="text" id="numeros">
+    <button onclick="calcularQuadrados()">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        function quadradoDosNumeros(array) {
+            return array.map(num => num ** 2);
+        }
+
+        function calcularQuadrados() {
+            const input = document.getElementById("numeros").value;
+            const numeros = input.split(",").map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+            const quadrados = quadradoDosNumeros(numeros);
+            document.getElementById("resultado").innerText = "Quadrados: " + quadrados.join(", ");
+        }
+    </script>
+
+</body>
+</html>
