@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encontrar a String Mais Longa</title>
+</head>
+<body>
+
+    <h2>Descubra a String Mais Longa</h2>
+    <label for="strings">Digite palavras separadas por vírgula:</label>
+    <input type="text" id="strings">
+    <button onclick="encontrarStringMaisLonga()">Encontrar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function stringMaisLonga(array) {
+            return array.reduce((maisLonga, atual) => atual.length > maisLonga.length ? atual : maisLonga, "");
+        }
+
+        function encontrarStringMaisLonga() {
+            const input = document.getElementById("strings").value;
+            const palavras = input.split(",").map(str => str.trim()).filter(str => str.length > 0);
+
+            if (palavras.length === 0) {
+                document.getElementById("resultado").innerText = "Por favor, insira palavras válidas.";
+                return;
+            }
+
+            const maisLonga = stringMaisLonga(palavras);
+            document.getElementById("resultado").innerText = "A string mais longa é: " + maisLonga;
+        }
+    </script>
+
+</body>
+</html>
+
