@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média dos Números Pares</title>
+</head>
+<body>
+
+    <h2>Calculadora de Média dos Números Pares</h2>
+    <label for="numeros">Digite os números separados por vírgula:</label>
+    <input type="text" id="numeros">
+    <button onclick="calcularMediaPares()">Calcular Média</button>
+    <p id="resultado"></p>
+
+    <script>
+        function mediaNumerosPares(array) {
+            const pares = array.filter(num => num % 2 === 0); // Filtra apenas os números pares
+            if (pares.length === 0) return 0; // Retorna 0 se não houver números pares
+            const soma = pares.reduce((total, num) => total + num, 0); // Soma os números pares
+            return soma / pares.length; // Calcula a média
+        }
+
+        function calcularMediaPares() {
+            const input = document.getElementById("numeros").value;
+            const numeros = input.split(",").map(num => parseFloat(num.trim())).filter(num => !isNaN(num));
+
+            if (numeros.length === 0) {
+                document.getElementById("resultado").innerText = "Por favor, insira números válidos.";
+                return;
+            }
+
+            const media = mediaNumerosPares(numeros);
+            document.getElementById("resultado").innerText = "Média dos números pares: " + media.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
+
