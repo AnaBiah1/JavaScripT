@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma de Números Pares</title>
+</head>
+<body>
+
+    <h2>Calculadora de Soma de Números Pares</h2>
+    <label for="numeros">Digite os números separados por vírgula:</label>
+    <input type="text" id="numeros">
+    <button onclick="calcularSomaPares()">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        function somaPares(array) {
+            return array.reduce((soma, num) => num % 2 === 0 ? soma + num : soma, 0);
+        }
+
+        function calcularSomaPares() {
+            const input = document.getElementById("numeros").value;
+            const numeros = input.split(",").map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+            const resultado = somaPares(numeros);
+            document.getElementById("resultado").innerText = "Soma dos números pares: " + resultado;
+        }
+    </script>
+
+</body>
+</html>
