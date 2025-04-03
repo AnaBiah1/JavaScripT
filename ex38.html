@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprimento das Strings</title>
+</head>
+<body>
+
+    <h2>Calculadora de Comprimento de Strings</h2>
+    <label for="strings">Digite palavras separadas por vírgula:</label>
+    <input type="text" id="strings">
+    <button onclick="calcularComprimentos()">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        function comprimentoDasStrings(array) {
+            return array.map(str => str.length);
+        }
+
+        function calcularComprimentos() {
+            const input = document.getElementById("strings").value;
+            const palavras = input.split(",").map(str => str.trim()).filter(str => str.length > 0);
+            const comprimentos = comprimentoDasStrings(palavras);
+            document.getElementById("resultado").innerText = "Comprimentos: " + comprimentos.join(", ");
+        }
+    </script>
+
+</body>
+</html>
