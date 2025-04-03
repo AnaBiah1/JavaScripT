@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onmouseover</title>
+    <style>
+        #meuDiv{
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            text-align: center;
+            line-height: center;
+            font-size: 20px;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="meuDiv" onmouseover="mudaCor()" onmouseover="mudarCorBase()">Passe o mouse aqui</div>
+    <script>
+        function mudarCor(){
+            document.getElementById('meuDiv').style.backgroundColor = 'lightgreen';
+        }
+        function mudarCorBase(){
+            document.getElementById('meuDiv').style.backgroundColor = 'lightblue';
+        }
+    </script>
+</body>
+</html>
