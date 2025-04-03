@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordem alfabetica</title>
+</head>
+
+<body>
+
+    <h2>Ordenador de Strings</h2>
+    <label for="strings">Digite palavras separadas por vírgula:</label>
+    <input type="text" id="strings">
+    <button onclick="ordenarStrings()">Ordenar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function ordenarArrayStrings(array) {
+            return array.sort((a, b) => a.localeCompare(b)); 
+        }
+
+        function ordenarStrings() {
+            const input = document.getElementById("strings").value;
+            const palavras = input.split(",").map(str => str.trim()).filter(str => str.length > 0);
+
+            if (palavras.length === 0) {
+                document.getElementById("resultado").innerText = "Por favor, insira palavras válidas.";
+                return;
+            }
+
+            const palavrasOrdenadas = ordenarArrayStrings(palavras);
+            document.getElementById("resultado").innerText = "Palavras ordenadas: " + palavrasOrdenadas.join(", ");
+        }
+    </script>
+
+</body>
+</html>
