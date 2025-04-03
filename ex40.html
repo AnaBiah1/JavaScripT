@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Maiores de Idade</title>
+</head>
+<body>
+
+    <h2>Filtrar Maiores de Idade</h2>
+    <label for="pessoas">Digite nome e idade separados por vírgula (Ex: Ana,25;Carlos,17):</label><br>
+    <input type="text" id="pessoas">
+    <button onclick="filtrar()">Filtrar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function filtrarMaioresDeIdade(pessoas) {
+            return pessoas
+                .filter(pessoa => pessoa.idade > 18) // Filtra apenas maiores de 18 anos
+                .map(pessoa => pessoa.nome); // Retorna apenas os nomes
+        }
+
+        function filtrar() {
+            const input = document.getElementById("pessoas").value;
+            const listaPessoas = input.split(";").map(item => {
+                let [nome, idade] = item.split(",");
+                return { nome: nome.trim(), idade: parseInt(idade.trim()) };
+            }).filter(pessoa => pessoa.nome && !isNaN(pessoa.idade)); // Remove valores inválidos
+
+            const maioresDeIdade = filtrarMaioresDeIdade(listaPessoas);
+            document.getElementById("resultado").innerText = "Maiores de 18 anos: " + (maioresDeIdade.length ? maioresDeIdade.join(", ") : "Nenhum encontrado");
+        }
+    </script>
+
+</body>
+</html>
+
